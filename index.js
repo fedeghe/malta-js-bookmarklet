@@ -19,7 +19,15 @@ function bookmarklet(obj, options) {
         
         // a message the plugin can send to the console
         msg,
-        pluginName = path.basename(path.dirname(__filename));
+        pluginName = path.basename(path.dirname(__filename)),
+        butt = false,
+        out = {
+           bm : obj.name.replace(/\.js$/, '.bookmark'),
+           butt_bm : obj.name.replace(/\.js$/, '_button.bookmark')
+        },
+        bmWrap = function (codeString) {
+            return "javascript:void%20function(){" + encodeURIComponent(codeString) + "}();";
+        };
 
     options = options || {};
     
@@ -27,15 +35,59 @@ function bookmarklet(obj, options) {
      * The plugin can do his job on the current content (maybe modified by
      * the previous plugin) using o.content  
      */
-    obj.content = 'javascript:void%20function(){' + encodeURIComponent(obj.content) + '}();';
-    
+    obj.content = bmWrap(obj.content);
+
+
+
+    if ('button' in options && !!(options.button)) {
+
+        /**
+         * THIS IS THE BUTTON VERSION, to be saved in another file, if options ask for it
+         */
+
+        butt = bmWrap("(function () {" + 
+            "var butt = document.createElement('span')," + 
+                "scripts = document.getElementsByTagName('script')," +
+                "index = scripts.length - 1," + 
+                "script = 'currentScript' in window ? window.currentScript : scripts[index];" + 
+            "butt.style.position = 'absolute';" + 
+            "butt.style.fontFamily = 'verdana,sans';" + 
+            "butt.style.cursor = 'pointer';" + 
+            "butt.style.top = '10px';" + 
+            "butt.style.left = '10px';" + 
+            "butt.style.textShadow = '0px 0px 3px #fff';" + 
+            "butt.style.color = '#000';" + 
+            "butt.innerHTML = 'run me';" + 
+            "butt.onclick = function () {" + 
+                "var bm = \"" + obj.content + "\";" + 
+                "document.location.href = bm;" + 
+            "};" + 
+            "script.parentNode.insertBefore(butt, script);" + 
+        "})();");
+    }
+
     // the next plugin will be invoked with an updated obj
     // only when the solve function is called passing the updated obj
     return function (solve, reject) {
         // free to be async
-        fs.writeFile(obj.name, obj.content, function (err) {
+        fs.writeFile(out.bm, obj.content, function (err) {
             if (err == null) {
-                msg = 'plugin ' + pluginName.white() + ' wrote ' + obj.name +' (' + self.getSize(obj.name) + ')';
+                msg = 'plugin ' + pluginName.white() + ' wrote ' + out.bm +' (' + self.getSize(obj.name) + ')';
+
+                if (butt){
+                    fs.writeFile(out.butt_bm, butt, function (err) {
+                        if (err == null) {
+                            msg += "\n" + "\tand wrote " + out.butt_bm +' (' + self.getSize(out.butt_bm) + ')';
+                        } else {
+                            msg += "\n" + "\t but did not wrote " + out.butt_bm;
+                        }
+                        solve(obj);
+                        self.notifyAndUnlock(start, msg);
+                    });
+                } else {
+                    solve(obj);
+                    self.notifyAndUnlock(start, msg);
+                }
             } else {
                 console.log('[ERROR] ' + pluginName + ' says:');
                 console.dir(err);
@@ -43,10 +95,7 @@ function bookmarklet(obj, options) {
                 // something wrong, stop malta
                 self.stop();
             }
-            
-            // allright, solve, notify and let malta proceed
-            solve(obj);
-            self.notifyAndUnlock(start, msg);
+            fs.unlink(obj.name);
         })
     }
 }

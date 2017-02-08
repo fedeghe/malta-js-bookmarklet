@@ -3,6 +3,8 @@ This plugin can be used on: **.js** files and even on **.coffee** and **.ts** fi
 ### Purpose  
 Allow to create bookmarklets from javascript code  
 
+Options : 
+    - **button** : if set tue `true` creates even a second bookmarklet which injects on the uper left corner of the page a "run me" button to run the code.
 
 Sample usage:  
 
