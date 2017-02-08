@@ -1,5 +1,5 @@
 //load dependencies and whatever needed
-var path = require('path')
+var path = require('path'),
     fs = require('fs');
 
 function bookmarklet(obj, options) {
