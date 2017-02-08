@@ -53,6 +53,7 @@ function bookmarklet(obj, options) {
             "butt.style.position = 'absolute';" + 
             "butt.style.fontFamily = 'verdana,sans';" + 
             "butt.style.cursor = 'pointer';" + 
+            "butt.style.zIndex = 999999;" + 
             "butt.style.top = '10px';" + 
             "butt.style.left = '10px';" + 
             "butt.style.textShadow = '0px 0px 3px #fff';" + 
