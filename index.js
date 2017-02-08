@@ -46,24 +46,30 @@ function bookmarklet(obj, options) {
          */
 
         butt = bmWrap("(function () {" + 
-            "var butt = document.createElement('span')," + 
-                "scripts = document.getElementsByTagName('script')," +
-                "index = scripts.length - 1," + 
-                "script = 'currentScript' in window ? window.currentScript : scripts[index];" + 
+            "var butt = document.createElement('span');" + 
             "butt.style.position = 'absolute';" + 
             "butt.style.fontFamily = 'verdana,sans';" + 
             "butt.style.cursor = 'pointer';" + 
             "butt.style.zIndex = 999999;" + 
             "butt.style.top = '10px';" + 
             "butt.style.left = '10px';" + 
-            "butt.style.textShadow = '0px 0px 3px #fff';" + 
+            "butt.style.height = '20px';" + 
+            "butt.style['line-height'] = '16px';" + 
+            "butt.style.padding = '0px 4px';" + 
+            "butt.style.border = 'none 5px #000000';"+
+            "butt.style['-moz-border-radius'] = '5px';"+
+            "butt.style['-webkit-border-radius'] = '5px';"+
+            "butt.style['border-radius'] = '5px';" +
+            
             "butt.style.color = '#000';" + 
+            "butt.style.backgroundColor = '#fff';" + 
             "butt.innerHTML = 'run me';" + 
             "butt.onclick = function () {" + 
                 "var bm = \"" + obj.content + "\";" + 
                 "document.location.href = bm;" + 
+                "document.body.removeChild(butt);" + 
             "};" + 
-            "script.parentNode.insertBefore(butt, script);" + 
+            "document.body.appendChild(butt);" + 
         "})();");
     }
 
