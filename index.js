@@ -37,17 +37,13 @@ function bookmarklet(obj, options) {
      */
     obj.content = bmWrap(obj.content);
 
-
-
     if ('button' in options && !!(options.button)) {
-
         /**
          * THIS IS THE BUTTON VERSION, to be saved in another file, if options ask for it
          */
-
         butt = bmWrap("(function () {" + 
             "var butt = document.createElement('span');" + 
-            "butt.style.position = 'absolute';" + 
+            "butt.style.position = 'fixed';" + 
             "butt.style.fontFamily = 'verdana,sans';" + 
             "butt.style.cursor = 'pointer';" + 
             "butt.style.zIndex = 999999;" + 
@@ -56,11 +52,13 @@ function bookmarklet(obj, options) {
             "butt.style.height = '20px';" + 
             "butt.style['line-height'] = '16px';" + 
             "butt.style.padding = '0px 4px';" + 
-            "butt.style.border = 'none 5px #000000';"+
-            "butt.style['-moz-border-radius'] = '5px';"+
-            "butt.style['-webkit-border-radius'] = '5px';"+
+            "butt.style.border = 'solid 2px #000000';" +
+            "butt.style['-moz-box-shadow']= '0px 0px 5px #ffffff';" +
+            "butt.style['-webkit-box-shadow']= '0px 0px 5px #ffffff';" +
+            "butt.style['box-shadow']= '0px 0px 5px #ffffff';" +
+            "butt.style['-moz-border-radius'] = '5px';" +
+            "butt.style['-webkit-border-radius'] = '5px';" +
             "butt.style['border-radius'] = '5px';" +
-            
             "butt.style.color = '#000';" + 
             "butt.style.backgroundColor = '#fff';" + 
             "butt.innerHTML = 'run me';" + 
