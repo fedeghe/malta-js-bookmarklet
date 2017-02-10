@@ -7,24 +7,25 @@ Options :
     - **button** : if set tue `true` creates even a second bookmarklet which injects on the uper left corner of the page a "run me" button to run the code.
 
 Sample usage:  
-
-    malta app/source/bm.js public/js -plugins=malta-js-bookmarklet
-
+```
+malta app/source/bm.js public/js -plugins=malta-js-bookmarklet
+```
 or in the .json build file :
-
-    "app/source/bm.js" : "public/js -plugins=malta-js-bookmarklet"
-
+```
+"app/source/bm.js" : "public/js -plugins=malta-js-bookmarklet"
+```
 or in a script : 
-
-    var Malta = require('malta');
-    Malta.get().check([
-        'app/source/bm.js',
-        'public/js',
-        '-plugins=malta-js-bookmarklet'
-        ]).start(function (o) {
-            var s = this;
-            console.log('name : ' + o.name)
-            console.log("content : \n" + o.content);
-            'plugin' in o && console.log("plugin : " + o.plugin);
-            console.log('=========');
-        });
+``` js
+var Malta = require('malta');
+Malta.get().check([
+    'app/source/bm.js',
+    'public/js',
+    '-plugins=malta-js-bookmarklet'
+    ]).start(function (o) {
+        var s = this;
+        console.log('name : ' + o.name)
+        console.log("content : \n" + o.content);
+        'plugin' in o && console.log("plugin : " + o.plugin);
+        console.log('=========');
+    });
+```
