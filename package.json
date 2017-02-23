@@ -1,6 +1,6 @@
 {
   "name": "malta-js-bookmarklet",
-  "version" : "1.0.6",
+  "version" : "1.0.7",
   "description": "Malta plugin to create bookmarklets",
  
   "scripts": {
@@ -16,14 +16,14 @@
     "malta js bookmarklet"
   ],
   "author": "Federico Ghedina <federico.ghedina@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fedeghe/malta-js-bookmarklet/issues"
   },
   "homepage": "https://github.com/fedeghe/malta-js-bookmarklet#readme",
 
   "dependencies": {
-    "malta": ">=3.3.3"
+    "malta": ">=3.4.0"
   },
   "main": "index.js"
 }
