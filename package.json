@@ -1,6 +1,6 @@
 {
   "name": "malta-js-bookmarklet",
-  "version" : "1.0.7",
+  "version" : "1.0.8",
   "description": "Malta plugin to create bookmarklets",
  
   "scripts": {
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/fedeghe/malta-js-bookmarklet#readme",
 
   "dependencies": {
-    "malta": ">=3.4.0"
+    "malta": ">=3.8.3"
   },
   "main": "index.js"
 }
