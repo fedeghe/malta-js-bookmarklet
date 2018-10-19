@@ -100,7 +100,7 @@ function bookmarklet(obj, options) {
                 // something wrong, stop malta
                 self.stop();
             }
-            fs.unlink(obj.name);
+            fs.unlink(obj.name, () => {});
         })
     }
 }
