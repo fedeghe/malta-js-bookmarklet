@@ -1,27 +1,27 @@
 {
-  "name": "malta-js-bookmarklet",
-  "version": "1.0.10",
-  "description": "Malta plugin to create bookmarklets",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fedeghe/malta-js-bookmarklet.git"
-  },
-  "keywords": [
-    "malta",
-    "malta plugin",
-    "malta js bookmarklet"
-  ],
-  "author": "Federico Ghedina <federico.ghedina@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fedeghe/malta-js-bookmarklet/issues"
-  },
-  "homepage": "https://github.com/fedeghe/malta-js-bookmarklet#readme",
-  "dependencies": {
-    "malta": ">=3.8.14"
-  },
-  "main": "index.js"
+    "name": "malta-js-bookmarklet",
+    "version": "1.0.10",
+    "description": "Malta plugin to create bookmarklets",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fedeghe/malta-js-bookmarklet.git"
+    },
+    "keywords": [
+        "malta",
+        "malta plugin",
+        "malta js bookmarklet"
+    ],
+    "author": "Federico Ghedina <fedeghe@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/fedeghe/malta-js-bookmarklet/issues"
+    },
+    "homepage": "https://github.com/fedeghe/malta-js-bookmarklet#readme",
+    "dependencies": {
+        "malta": ">=3.8.14"
+    },
+    "main": "index.js"
 }
