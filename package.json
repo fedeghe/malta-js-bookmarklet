@@ -20,8 +20,5 @@
         "url": "https://github.com/fedeghe/malta-js-bookmarklet/issues"
     },
     "homepage": "https://github.com/fedeghe/malta-js-bookmarklet#readme",
-    "dependencies": {
-        "malta": "^4.0.4"
-    },
     "main": "index.js"
 }

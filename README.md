@@ -1,6 +1,5 @@
 ---
 [![npm version](https://badge.fury.io/js/malta-js-bookmarklet.svg)](http://badge.fury.io/js/malta-js-bookmarklet)
-[![Dependencies](https://david-dm.org/fedeghe/malta-js-bookmarklet.svg)](https://david-dm.org/fedeghe/malta-js-bookmarklet)
 [![npm downloads](https://img.shields.io/npm/dt/malta-js-bookmarklet.svg)](https://npmjs.org/package/malta-js-bookmarklet)
 [![npm downloads](https://img.shields.io/npm/dm/malta-js-bookmarklet.svg)](https://npmjs.org/package/malta-js-bookmarklet)  
 ---  

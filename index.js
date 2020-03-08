@@ -1,5 +1,4 @@
-//load dependencies and whatever needed
-var path = require('path'),
+const path = require('path'),
     fs = require('fs');
 
 function bookmarklet(obj, options) {
@@ -11,24 +10,20 @@ function bookmarklet(obj, options) {
      * all options, the output folder, an on..
      * @type Object
      */
-    var self = this,
-        
+    const self = this,
         // just to show some stats on the console
         // about the time required by the plugin
         start = new Date(),
-        
-        // a message the plugin can send to the console
-        msg,
         pluginName = path.basename(path.dirname(__filename)),
-        butt = false,
         out = {
            bm : obj.name.replace(/\.js$/, '.bookmark'),
            butt_bm : obj.name.replace(/\.js$/, '_button.bookmark')
         },
-        bmWrap = function (codeString) {
-            return "javascript:void%20function(){" + encodeURIComponent(codeString) + "}();";
-        };
-
+        bmWrap =  codeString => "javascript:void%20function(){" + encodeURIComponent(codeString) + "}();";
+    
+    let msg,
+        butt = false;
+    
     options = options || {};
     
     /**
@@ -73,14 +68,14 @@ function bookmarklet(obj, options) {
 
     // the next plugin will be invoked with an updated obj
     // only when the solve function is called passing the updated obj
-    return function (solve, reject) {
+    return (solve, reject) => {
         // free to be async
-        fs.writeFile(out.bm, obj.content, function (err) {
+        fs.writeFile(out.bm, obj.content, err => {
             if (err == null) {
                 msg = 'plugin ' + pluginName.white() + ' wrote ' + out.bm +' (' + self.getSize(obj.name) + ')';
 
                 if (butt){
-                    fs.writeFile(out.butt_bm, butt, function (err) {
+                    fs.writeFile(out.butt_bm, butt, err => {
                         if (err == null) {
                             msg += "\n" + "\tand wrote " + out.butt_bm +' (' + self.getSize(out.butt_bm) + ')';
                         } else {
